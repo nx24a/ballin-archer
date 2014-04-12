@@ -38,11 +38,11 @@ var Ship = (function() {
     //set methods
     Ship.prototype.setId = function(id){
         this._id = id;
-    }
+    };
 
     Ship.prototype.setName = function(name){
         this._name = name;
-    }
+    };
     
     Ship.prototype.setType = function(type){
         this._type = type;
@@ -50,96 +50,96 @@ var Ship = (function() {
    
     Ship.prototype.setModel = function(model){
         this._model = model;
-    }
+    };
 
     Ship.prototype.setIcon = function(icon){
         this._icon = icon;
-    }
+    };
 
     Ship.prototype.setSpeed = function(speed){
         this._speed = speed;
-    }
+    };
     
     Ship.prototype.setCapacity = function(capacity){
         this._capacity = capacity;
-    }
+    };
    
     Ship.prototype.setLoad = function(load){
         this._load = load;
-    }
+    };
  
     Ship.prototype.setCannons = function(cannons){
         this._cannons = cannons;
-    }
+    };
 
     Ship.prototype.setLife = function(life){
         this._life = life;
-    }
+    };
     
     Ship.prototype.setMaxLife = function(maxLife){
         this._maxLife = maxLife;
-    }
+    };
    
     Ship.prototype.setDamage = function(damage){
         this._damage = damage;
-    }
+    };
     
     Ship.prototype.setPosition = function(currentPosition){
         this._currentPosition = currentPosition;
-    }
+    };
     
     //get methods
     Ship.prototype.getId = function(){
         return this._id;
-    }
+    };
 
     Ship.prototype.getName = function(){
         return this._name;
-    }
+    };
     
     Ship.prototype.getType = function(){
         return this._type;
-    }
+    };
    
     Ship.prototype.getModel = function(){
         return this._model;
-    }
+    };
 
     Ship.prototype.getIcon = function(){
         return this._icon;
-    }
+    };
 
     Ship.prototype.getSpeed = function(){
         return this._speed;
-    }
+    };
     
     Ship.prototype.getCapacity = function(){
         return this._capacity;
-    }
+    };
    
     Ship.prototype.getLoad = function(){
         return this._load;
-    }
+    };
  
     Ship.prototype.getCannons = function(){
         return this._cannons;
-    }
+    };
 
     Ship.prototype.getLife = function(){
         return this._life;
-    }
+    };
     
     Ship.prototype.getMaxLife = function(){
         return this._maxLife;
-    }
+    };
    
     Ship.prototype.getDamage = function(){
         return this._damage;
-    }
+    };
     
     Ship.prototype.getPosition = function(){
         return this._currentPosition;
-    }
+    };
     
     return Ship;
 })();

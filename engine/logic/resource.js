@@ -60,7 +60,7 @@ var Resource = (function() {
                 return "Getreide";
             break;
             case 2:
-                return "Gewürze";
+                return "GewÃ¼rze";
             break;
             case 3:
                 return "Kakao";
