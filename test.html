@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Dummy</title>
         <style>
             body{
                 margin:0;
@@ -83,10 +83,20 @@
     </head>
     <body>
         <div id="log"></div>
+        <div>
+            <input type="text" id="coordX" value="200"/>
+            <input type="text" id="coordY" value="180"/>
+            <button id="setC">Set Coords</button>
+            <button id="street">Set Street</button>
+            <button id="wall">Set Wall</button>
+            <button id="pier">Set Pier</button>
+            <button id="fischer">Set Fischer</button>
+        </div>
         <script src="jquery.js"></script>
+        <script src="engine/globals.js"></script>
         <script src="engine/game/map/map.js"></script>
         <script src="engine/handler/resourceHandler.js"></script>
+        <script src="engine/renderer.js"></script>
         <script src="engine/core.js"></script>
-
     </body>
 </html>

@@ -48,6 +48,14 @@ $(document).ready(function(){
         toDraw = 22;
     });
     
+    $("#pier").click(function(){
+        toDraw = 23;
+    });
+    
+    $("#fischer").click(function(){
+        toDraw = 24;
+    });
+    
     $("canvas").bind('mousemove', function(event) { 
             
             pageX = viewport.width-event.pageX;

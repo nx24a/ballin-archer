@@ -250,7 +250,7 @@ function renderInverse() {
                             viewportControl.drawImage(images.waterTop, posX, posY+11);
                         } 
                         if(map[startX+x][startY+y][0] == 13) {
-                            viewportControl.drawImage(images.waterBottom, posX, posY);
+                            viewportControl.drawImage(images.waterBottom, posX, posY+8);
                         } 
                         if(map[startX+x][startY+y][0] == 14) {
                             viewportControl.drawImage(images.water1, posX, posY);
@@ -266,6 +266,7 @@ function renderInverse() {
                             viewportControl.drawImage(images.wall, posX, posY-30);
                         }
                         if(map[startX+x][startY+y][0] == 23) {
+                            viewportControl.drawImage(images.islandDefaultRightFrontCorner, posX, posY);
                             viewportControl.drawImage(images.pier, posX, posY);
                         }
                         if(map[startX+x][startY+y][0] == 24) {
