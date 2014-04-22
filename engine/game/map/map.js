@@ -18,7 +18,7 @@ for(var i=0; i<map_tiles_x; i++) {
 for(var i=0; i<map_tiles_x; i++){
     for(var j=0; j<map_tiles_y; j++){
         map[i][j][0] = 1;
-        //map[i][j][1] = i;
+        map[i][j][1] = -1;
     }   
 }
 
@@ -30,7 +30,7 @@ function island(x,y,s) {
 for(var i=x; i<x+s; i++){
     for(var j=y; j<y+s; j++){
             map[i][j][0] = 2;
-            //map[i][j][1] = 2;
+            map[i][j][1] = 10;
         if(j==y+s-1) {
             map[i][j][0] = 4;
             //map[i][j][1] = 2;
@@ -88,8 +88,13 @@ var sources = {
   waterBottom: 'resources/test/waterBottom.png',
   activeField: 'resources/test/active.png',
   street: 'resources/test/street0.png',
+  street1: 'resources/test/street1.png',
   wall: 'resources/test/wall0.png',
   pier: 'resources/test/pier0.png',
   fischer: 'resources/test/fischer0.png',
+  kontor1: 'resources/test/kontor1.png',
+  kontor2: 'resources/test/kontor2.png',
+  kontor3: 'resources/test/kontor3.png',
+  kontor4: 'resources/test/kontor4.png',
 };
 

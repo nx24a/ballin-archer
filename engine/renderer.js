@@ -257,7 +257,7 @@ function renderInverse() {
                             viewportControl.drawImage(images.waterLeft, posX, posY+12);
                         } 
                         if(map[startX+x][startY+y][0] == 15) {
-                            viewportControl.drawImage(images.waterRight, posX, posY+5);
+                            viewportControl.drawImage(images.waterRight, posX, posY+10);
                         }
                         if(map[startX+x][startY+y][0] == 21) {
                             viewportControl.drawImage(images.street, posX, posY);
@@ -273,7 +273,22 @@ function renderInverse() {
                             viewportControl.drawImage(images.islandDefaultRightFrontCorner, posX, posY);
                             viewportControl.drawImage(images.fischer, posX, posY-15);
                         }
-                   tiles++;
+                        if(map[startX+x][startY+y][0] == 25) {
+                            viewportControl.drawImage(images.kontor1, posX, posY-30);
+                        } 
+                        if(map[startX+x][startY+y][0] == 26) {
+                            viewportControl.drawImage(images.kontor2, posX, posY-39);
+                        }
+                        if(map[startX+x][startY+y][0] == 27) {
+                            viewportControl.drawImage(images.kontor3, posX, posY-30);
+                        }
+                        if(map[startX+x][startY+y][0] == 28) {
+                            viewportControl.drawImage(images.kontor4, posX, posY-22);
+                        }
+                        if(map[startX+x][startY+y][0] == 29) {
+                            viewportControl.drawImage(images.street1, posX, posY);
+                        }
+                   //tiles++;
                    }        
                }
                z++;
@@ -289,6 +304,6 @@ function renderInverse() {
             posX = viewportOffsetX+(mouseX-mouseY)*defaultTileWidth;
             posY = (((mouseX+mouseY)*defaultTileWidth)/2)-viewportOffsetY;
             viewportControl.drawImage(images.activeField, posX, posY);
-            console.log(tiles); 
+            //console.log(tiles); 
          });         
  }

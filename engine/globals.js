@@ -26,7 +26,7 @@ var startY = 160;
 
 var pageX, pageY, mouseX, mouseY;
 
-var toDraw = 21;
+var toDraw = 0;
 
 //append viewport to document
 $("body").prepend(viewport);
@@ -41,19 +41,23 @@ $(document).ready(function(){
     });
     
     $("#street").click(function(){
-        toDraw = 21;
+        toDraw = 1;
     });
     
     $("#wall").click(function(){
-        toDraw = 22;
+        toDraw = 4;
     });
     
     $("#pier").click(function(){
-        toDraw = 23;
+        toDraw = 2;
     });
     
     $("#fischer").click(function(){
-        toDraw = 24;
+        toDraw = 3;
+    });
+    
+    $("#kontor").click(function(){
+        toDraw = 0;
     });
     
     $("canvas").bind('mousemove', function(event) { 
@@ -89,7 +93,7 @@ $(document).ready(function(){
         });
         
    $("canvas").bind('click', function(){
-       map[startX+mouseX][startY+mouseY][0] = toDraw;
+       buildStructure(toDraw);
    });
 
     /*
@@ -105,3 +109,32 @@ $(document).ready(function(){
     });   
     */
 });
+
+function buildStructure(type) {
+    
+    switch(type) {
+        case 0:
+            map[startX+mouseX][startY+mouseY][0] = 26;
+            map[startX+mouseX-1][startY+mouseY][0] = 25;
+            map[startX+mouseX][startY+mouseY-1][0] = 27;
+            map[startX+mouseX][startY+mouseY-2][0] = 28;
+        break;
+        case 1:
+            if(map[startX+mouseX][startY+mouseY-1][0] == 21) {
+                map[startX+mouseX][startY+mouseY-1][0] = 29;
+                map[startX+mouseX][startY+mouseY][0] = 29;
+            } else if(map[startX+mouseX][startY+mouseY-1][0] == 29){
+                map[startX+mouseX][startY+mouseY][0] = 29;
+            } else {
+                map[startX+mouseX][startY+mouseY][0] = 21;
+            }
+            
+        break;
+        case 2:
+            map[startX+mouseX][startY+mouseY][0] = 23;
+        break;
+        case 3:
+            map[startX+mouseX][startY+mouseY][0] = 24;
+        break;
+    }
+}
