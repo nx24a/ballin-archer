@@ -28,6 +28,7 @@ var pageX, pageY, mouseX, mouseY;
 
 var toDraw = 0;
 
+
 //append viewport to document
 $("body").prepend(viewport);
 
@@ -67,7 +68,7 @@ $(document).ready(function(){
 
             mouseX = -Math.floor(((pageX)/16)/2-((pageY)/8)/2);
             mouseY = Math.floor(((pageX)/16)/2+((pageY)/8)/2)+1;
-
+            /*
             if(event.pageX<30)
             {
                 startX--;
@@ -87,7 +88,7 @@ $(document).ready(function(){
             {
                 startY++;
             }
-
+            */
             $("#log").html("("+mouseX+", "+mouseY+")"+" offset ("+event.pageX+","+event.pageY+")");
 
         });
@@ -120,15 +121,16 @@ function buildStructure(type) {
             map[startX+mouseX][startY+mouseY-2][0] = 28;
         break;
         case 1:
-            if(map[startX+mouseX][startY+mouseY-1][0] == 21) {
-                map[startX+mouseX][startY+mouseY-1][0] = 29;
-                map[startX+mouseX][startY+mouseY][0] = 29;
-            } else if(map[startX+mouseX][startY+mouseY-1][0] == 29){
-                map[startX+mouseX][startY+mouseY][0] = 29;
-            } else {
-                map[startX+mouseX][startY+mouseY][0] = 21;
+            if(map[startX+mouseX-1][startY+mouseY][0] == 1000 || map[startX+mouseX+1][startY+mouseY][0] == 1000) {
+               map[startX+mouseX][startY+mouseY][0] = 1000; 
             }
-            
+            else if(map[startX+mouseX][startY+mouseY-1][0] == 1000 || map[startX+mouseX][startY+mouseY+1][0] == 1000 || map[startX+mouseX][startY+mouseY-1][0] == 1001 || map[startX+mouseX][startY+mouseY+1][0] == 1001) {
+               map[startX+mouseX][startY+mouseY-1][0] = 1001;
+               map[startX+mouseX][startY+mouseY][0] = 1001; 
+            }
+            else {
+               map[startX+mouseX][startY+mouseY][0] = 1000;  
+            }
         break;
         case 2:
             map[startX+mouseX][startY+mouseY][0] = 23;
@@ -138,3 +140,15 @@ function buildStructure(type) {
         break;
     }
 }
+
+
+/*
+             if(map[startX+mouseX][startY+mouseY-1][0] == 1000) {
+                map[startX+mouseX][startY+mouseY-1][0] = 1001;
+                map[startX+mouseX][startY+mouseY][0] = 1001;
+            } else if(map[startX+mouseX][startY+mouseY-1][0] == 1001){
+                map[startX+mouseX][startY+mouseY][0] = 1001;
+            } else {
+                map[startX+mouseX][startY+mouseY][0] = 1000;
+            }
+ */

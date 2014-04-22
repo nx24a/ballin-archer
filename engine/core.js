@@ -13,6 +13,7 @@ var timestampLast;
 
 function init() {
     timestampLast  = Date.now();
+    loadImageResources();
     main();
 }
 
@@ -25,8 +26,8 @@ function main() {
     update(deltaTime);
     
     //render
-    renderInverse();
-    
+    render();
+
     //update last timestamp
     timestampLast = currentTime;
     

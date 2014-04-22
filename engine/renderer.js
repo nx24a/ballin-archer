@@ -11,6 +11,7 @@ function depthBuffer() {
     var z=0;
     var c=0;
     var v=0;
+    var tiles = 0;
 
     for(var y=ymax; y>=1;y--) {   
         for(var x=v; x<xmax-c;x++) {
@@ -31,6 +32,7 @@ function depthBuffer() {
                 }
 
                 buffer[z].push(tile);
+                tiles++;
             }  
         }
         
@@ -42,7 +44,8 @@ function depthBuffer() {
             c--;
             v++;
         }
-    }  
+    }
+    console.log(tiles);
 }
 
 function renderDepth() {
@@ -259,9 +262,6 @@ function renderInverse() {
                         if(map[startX+x][startY+y][0] == 15) {
                             viewportControl.drawImage(images.waterRight, posX, posY+10);
                         }
-                        if(map[startX+x][startY+y][0] == 21) {
-                            viewportControl.drawImage(images.street, posX, posY);
-                        }
                         if(map[startX+x][startY+y][0] == 22) {
                             viewportControl.drawImage(images.wall, posX, posY-30);
                         }
@@ -285,8 +285,45 @@ function renderInverse() {
                         if(map[startX+x][startY+y][0] == 28) {
                             viewportControl.drawImage(images.kontor4, posX, posY-22);
                         }
-                        if(map[startX+x][startY+y][0] == 29) {
-                            viewportControl.drawImage(images.street1, posX, posY);
+                        
+                        if(map[startX+x][startY+y][0] == 1000) {
+                            viewportControl.drawImage(images.street_stone_0, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1001) {
+                            viewportControl.drawImage(images.street_stone_1, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1002) {
+                            viewportControl.drawImage(images.street_stone_2, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1003) {
+                            viewportControl.drawImage(images.street_stone_3, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1004) {
+                            viewportControl.drawImage(images.street_stone_4, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1005) {
+                            viewportControl.drawImage(images.street_stone_5, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1006) {
+                            viewportControl.drawImage(images.street_stone_6, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1007) {
+                            viewportControl.drawImage(images.street_stone_7, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1008) {
+                            viewportControl.drawImage(images.street_stone_8, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1009) {
+                            viewportControl.drawImage(images.street_stone_9, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1010) {
+                            viewportControl.drawImage(images.street_stone_10, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1011) {
+                            viewportControl.drawImage(images.street_stone_11, posX, posY);
+                        }
+                        if(map[startX+x][startY+y][0] == 1012) {
+                            viewportControl.drawImage(images.street_stone_12, posX, posY);
                         }
                    //tiles++;
                    }        
@@ -305,5 +342,47 @@ function renderInverse() {
             posY = (((mouseX+mouseY)*defaultTileWidth)/2)-viewportOffsetY;
             viewportControl.drawImage(images.activeField, posX, posY);
             //console.log(tiles); 
-         });         
+         });    
+         
  }
+ 
+ 
+function render() {
+
+    var posX, posY; 
+    var xmax = maxDrawRangeX;
+    var ymax = xmax+maxDrawRangeY;
+    var tiles = 0;
+    var z=0;
+    var c=0;
+    var v=0;
+
+    for(var y=0; y<=ymax;y++) {   
+        for(var x=v; x<xmax-c;x++) {
+           if(y>x && x<z && x>c){
+           posX = viewportOffsetX+(x-y)*defaultTileWidth;
+           posY = (((x+y)*defaultTileWidth)/2)-viewportOffsetY;
+                var currentTile = resourceKeeper.textures[cachedImageResources[map[startX+x][startY+y][0]]];
+                if(currentTile.supportTile != "") {
+                    var supportTile = resourceKeeper.textures[currentTile.supportTile];
+                    viewportControl.drawImage(supportTile.image, posX, posY+parseInt(supportTile.offset));
+                }
+                viewportControl.drawImage(currentTile.image, posX, posY+parseInt(currentTile.offset));    
+           }        
+       }
+       z++;
+       if(y<(ymax/2)) {
+           c--;
+           v=c;
+       } else {
+           c--;
+           v++;
+       }
+
+    }
+    
+    var currentTile = resourceKeeper.textures[15];
+    posX = viewportOffsetX+(mouseX-mouseY)*defaultTileWidth;
+    posY = (((mouseX+mouseY)*defaultTileWidth)/2)-viewportOffsetY;
+    viewportControl.drawImage(currentTile.image, posX, posY); 
+}
