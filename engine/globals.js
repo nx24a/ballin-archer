@@ -4,8 +4,8 @@
 var viewport = document.createElement("canvas");
 var viewportControl = viewport.getContext("2d");
 
-viewport.width = 1280;
-viewport.height = 800;
+viewport.width = 800;
+viewport.height = 600;
 
 var offsetX = 201;
 var offsetY = 251;
@@ -27,6 +27,8 @@ var startY = 160;
 var pageX, pageY, mouseX, mouseY;
 
 var toDraw = 0;
+
+var moveX, moveY = false;
 
 
 //append viewport to document
@@ -68,13 +70,13 @@ $(document).ready(function(){
 
             mouseX = -Math.floor(((pageX)/16)/2-((pageY)/8)/2);
             mouseY = Math.floor(((pageX)/16)/2+((pageY)/8)/2)+1;
-            /*
+            
             if(event.pageX<30)
             {
                 startX--;
             }
             
-            if(event.pageX>1250)
+            if(event.pageX>viewport.width-30)
             {
                 startX++;
             }
@@ -84,11 +86,11 @@ $(document).ready(function(){
                 startY--;
             }
             
-            if(event.pageY>770)
+            if(event.pageY>viewport.height-30)
             {
                 startY++;
             }
-            */
+            
             $("#log").html("("+mouseX+", "+mouseY+")"+" offset ("+event.pageX+","+event.pageY+")");
 
         });
@@ -96,41 +98,21 @@ $(document).ready(function(){
    $("canvas").bind('click', function(){
        buildStructure(toDraw);
    });
-
-    /*
-    $(".scrollbottomright").bind('mouseenter', function() {
-        var self = $(this);
-        this.id = setInterval(function() {
-            offsetX++;
-            offsetY++;
-            showOffSets();
-        }, timeoutvalue);
-    }).bind('mouseleave', function(){
-        this.id && clearInterval(this.id);
-    });   
-    */
 });
 
 function buildStructure(type) {
     
     switch(type) {
         case 0:
+            if(map[startX+mouseX][startY+mouseY][1] == 100) {
             map[startX+mouseX][startY+mouseY][0] = 26;
             map[startX+mouseX-1][startY+mouseY][0] = 25;
             map[startX+mouseX][startY+mouseY-1][0] = 27;
             map[startX+mouseX][startY+mouseY-2][0] = 28;
+            }
         break;
         case 1:
-            if(map[startX+mouseX-1][startY+mouseY][0] == 1000 || map[startX+mouseX+1][startY+mouseY][0] == 1000) {
-               map[startX+mouseX][startY+mouseY][0] = 1000; 
-            }
-            else if(map[startX+mouseX][startY+mouseY-1][0] == 1000 || map[startX+mouseX][startY+mouseY+1][0] == 1000 || map[startX+mouseX][startY+mouseY-1][0] == 1001 || map[startX+mouseX][startY+mouseY+1][0] == 1001) {
-               map[startX+mouseX][startY+mouseY-1][0] = 1001;
-               map[startX+mouseX][startY+mouseY][0] = 1001; 
-            }
-            else {
-               map[startX+mouseX][startY+mouseY][0] = 1000;  
-            }
+            setTile(startX+mouseX,startY+mouseY);
         break;
         case 2:
             map[startX+mouseX][startY+mouseY][0] = 23;
@@ -140,15 +122,3 @@ function buildStructure(type) {
         break;
     }
 }
-
-
-/*
-             if(map[startX+mouseX][startY+mouseY-1][0] == 1000) {
-                map[startX+mouseX][startY+mouseY-1][0] = 1001;
-                map[startX+mouseX][startY+mouseY][0] = 1001;
-            } else if(map[startX+mouseX][startY+mouseY-1][0] == 1001){
-                map[startX+mouseX][startY+mouseY][0] = 1001;
-            } else {
-                map[startX+mouseX][startY+mouseY][0] = 1000;
-            }
- */

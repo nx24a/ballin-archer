@@ -381,7 +381,7 @@ function render() {
 
     }
     
-    var currentTile = resourceKeeper.textures[15];
+    var currentTile = resourceKeeper.textures[19];
     posX = viewportOffsetX+(mouseX-mouseY)*defaultTileWidth;
     posY = (((mouseX+mouseY)*defaultTileWidth)/2)-viewportOffsetY;
     viewportControl.drawImage(currentTile.image, posX, posY); 

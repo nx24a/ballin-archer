@@ -1,12 +1,12 @@
 //requestAnimationFrame
-window.requestAnimFrame = (function() {
-   return window.requestAnimationFrame ||
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
           window.webkitRequestAnimationFrame ||
-          window.mozRequestAnimationFrame ||
-          function( callback ) {
-              window.setTimeout(callback, 1000/60);
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
           };
-});
+})();
 
 //main engine loop
 var timestampLast;
