@@ -4,7 +4,7 @@
 var viewport = document.createElement("canvas");
 var viewportControl = viewport.getContext("2d");
 
-viewport.width = 800;
+viewport.width = 1280;
 viewport.height = 600;
 
 var offsetX = 201;
@@ -30,9 +30,13 @@ var toDraw = 0;
 
 var moveX, moveY = false;
 
+var consoleOpened = false;
+
+var approximativeMode = false;
+
 
 //append viewport to document
-$("body").prepend(viewport);
+$("#canvasContainer").append(viewport);
 
 //start when document is in ready state
 $(document).ready(function(){
@@ -91,12 +95,38 @@ $(document).ready(function(){
                 startY++;
             }
             
-            $("#log").html("("+mouseX+", "+mouseY+")"+" offset ("+event.pageX+","+event.pageY+")");
+            $("#consoleStats").html("Cursor position on screen:("+mouseX+", "+mouseY+")");
 
         });
         
    $("canvas").bind('click', function(){
        buildStructure(toDraw);
+   });
+   $("body").keydown(function(event){
+       if(event.which == 192) {
+           if(!consoleOpened) {
+                $( "#console" ).animate({opacity: 1,top: "0px"});
+                $(".consoleInput").focus();
+                consoleOpened = true;
+           } else {
+                $( "#console" ).animate({opacity: 1,top: "-200px"});
+                consoleOpened = false;
+           }
+           
+       }
+   });
+   
+   $(".consoleInput").keydown(function(event){
+       if($(".consoleInput").val().substr(0,1) == "^") {
+           $(".consoleInput").val("");
+           $(".consoleInput").blur();
+           $( "#console" ).animate({opacity: 1,top: "-200px"});
+           consoleOpened = false;
+       }
+       else if(event.which == 13) {
+           setCommand($(".consoleInput").val());
+           $(".consoleInput").val("");
+       }
    });
 });
 
@@ -121,4 +151,36 @@ function buildStructure(type) {
             map[startX+mouseX][startY+mouseY][0] = 24;
         break;
     }
+}
+
+function setCommand(cmd) {
+
+    if(cmd.substr(0,4) == "goto") {
+        var coords = cmd.substr(4).split(" ");
+        setCameraPosition(parseInt(coords[1]),parseInt(coords[2]));
+    }
+    if(cmd.substr(0,3) == "set") {
+        var info = cmd.substr(3).split(" ");
+        if(info[1] == "render") {
+            if(info[2] == "alternative") {
+                if(info[3] == "true") {
+                    approximativeMode = true;
+                    $("#consoleContent").append("<p>> rendering via setTimeout</p>");
+                } else {
+                    approximativeMode = false;
+                    $("#consoleContent").append("<p>> rendering via requestAnimationFrame</p>");
+                }
+            }
+        }
+    }
+    
+}
+
+function setCameraPosition(x,y) {
+    if(x>0 && x<1000)
+        startX = x;
+    if(y>0 && y<1000)
+    startY = y;
+
+    $("#consoleContent").append("<p>> setting camera to position: "+x+","+y+"</p>");
 }

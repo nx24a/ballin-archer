@@ -32,8 +32,14 @@ function main() {
     timestampLast = currentTime;
     
     //animations  
-    //requestAnimFrame(main);
-    window.setTimeout(main, 32);
+    //
+    if(approximativeMode) {
+        window.setTimeout(main, timeoutvalue);
+    }
+    else {
+        requestAnimFrame(main);
+    }
+        
 }
 
 function update(deltaTime) {

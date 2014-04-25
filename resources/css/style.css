@@ -13,3 +13,54 @@ body {
     margin: 0;
 }
 
+#console {
+    position: absolute;
+    width: 1280px;
+    height: 200px;
+    top: -200px;
+    left: 0px;
+    background: rgba(0,0,0,0.2);
+}
+
+#consoleContent {
+    float:left;
+    height: 151px;
+    width:1000px;
+    padding: 1em;
+    color: #fff;
+    overflow: hidden;
+    font-size: 10pt;
+    font-family: tahoma;
+}
+
+#consoleContent p{
+    margin: 0em;
+}
+
+#consoleStats {
+    float:right;
+    height: 151px;
+    width: 220px;
+    padding: 1em;
+    color: #fff;
+    
+    font-size: 10pt;
+    font-family: tahoma;
+}
+
+.consoleInput {
+    background: rgba(0,0,0,0);
+    height: 20px;
+    border: 0px;
+    color: #fff;
+    width: 99.5%;
+}
+
+#consoleInput {
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+.cleaner {
+    clear:both;
+}

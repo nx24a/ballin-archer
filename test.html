@@ -5,11 +5,14 @@
         <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
     </head>
     <body>
-        <div id="log"></div>
+        <div id="console">
+            <div id="consoleContent"></div>
+            <div id="consoleStats"></div>
+            <div class="cleaner"></div>
+            <div id="consoleInput"><input type="text" class="consoleInput"></div>
+        </div>
+        <div id="canvasContainer"></div>
         <div>
-            <input type="text" id="coordX" value="200"/>
-            <input type="text" id="coordY" value="180"/>
-            <button id="setC">Set Coords</button>
             <button id="street">Set Street</button>
             <button id="wall">Set Wall</button>
             <button id="pier">Set Pier</button>
