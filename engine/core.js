@@ -13,7 +13,7 @@ var timestampLast;
 
 function init() {
     timestampLast  = Date.now();
-    loadImageResources();
+    loadResources();
     main();
 }
 
@@ -43,7 +43,7 @@ function main() {
 }
 
 function update(deltaTime) {
-    
+    //musicRotation();
 }
 
 function animation(main) {

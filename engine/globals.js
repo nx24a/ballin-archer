@@ -4,7 +4,7 @@
 var viewport = document.createElement("canvas");
 var viewportControl = viewport.getContext("2d");
 
-viewport.width = 1280;
+viewport.width = 800;
 viewport.height = 600;
 
 var offsetX = 201;
@@ -41,7 +41,7 @@ $("#canvasContainer").append(viewport);
 //start when document is in ready state
 $(document).ready(function(){
     init();  
-    
+    $("canvas").addClass("pointer");
     $("#setC").click(function(){
         startX = parseInt($("#coordX").val());
         startY = parseInt($("#coordY").val());
@@ -78,21 +78,25 @@ $(document).ready(function(){
             if(event.pageX<30)
             {
                 startX--;
+                $("canvas").css("cursor: url(resources/textures/icons/scroll_up.png), auto;");
             }
             
             if(event.pageX>viewport.width-30)
             {
                 startX++;
+                $("canvas").css("cursor: url(resources/textures/icons/scroll_down.png), auto;");
             }
             
             if(event.pageY<30)
             {
                 startY--;
+                $("canvas").css("cursor: url(resources/textures/icons/scroll_left.png), auto;");
             }
             
             if(event.pageY>viewport.height-30)
             {
                 startY++;
+                $("canvas").css("cursor: url(resources/textures/icons/scroll_right.png), auto;");
             }
             
             $("#consoleStats").html("Cursor position on screen:("+mouseX+", "+mouseY+")");
@@ -103,7 +107,7 @@ $(document).ready(function(){
        buildStructure(toDraw);
    });
    $("body").keydown(function(event){
-       if(event.which == 192) {
+       if(event.which == 192 || event.which == 220) {
            if(!consoleOpened) {
                 $( "#console" ).animate({opacity: 1,top: "0px"});
                 $(".consoleInput").focus();

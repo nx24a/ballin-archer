@@ -64,3 +64,7 @@ body {
 .cleaner {
     clear:both;
 }
+
+.pointer {
+   cursor: url(../textures/icons/cursor.png), auto;
+}
