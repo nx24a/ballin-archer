@@ -4,8 +4,8 @@
 var viewport = document.createElement("canvas");
 var viewportControl = viewport.getContext("2d");
 
-viewport.width = 800;
-viewport.height = 600;
+viewport.width = 600;
+viewport.height = 300;
 
 var offsetX = 201;
 var offsetY = 251;
@@ -22,7 +22,7 @@ var maxDrawRangeX = Math.ceil(viewport.width/(defaultTileWidth*2)+8);
 var maxDrawRangeY = Math.ceil(viewport.height/(defaultTileHight*2)+4);
 
 var startX = 202;
-var startY = 160;
+var startY = 140;
 
 var pageX, pageY, mouseX, mouseY;
 
