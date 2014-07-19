@@ -1,7 +1,7 @@
 function loadResources() {
     loadImageResources();
-    //loadSFXResources();
-    //loadMusicResources();
+    loadSFXResources();
+    loadMusicResources();
 }
 
 function loadImageResources() {
