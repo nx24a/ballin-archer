@@ -26,7 +26,6 @@ function main() {
     update(deltaTime);
     
     //render
-    //renderBuffer();
     render();
 
     //update last timestamp

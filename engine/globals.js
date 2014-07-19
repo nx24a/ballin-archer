@@ -4,8 +4,8 @@ var buffer = [];
 var viewport = document.createElement("canvas");
 var viewportControl = viewport.getContext("2d");
 
-viewport.width = 1024;
-viewport.height = 768;
+viewport.width = 1900;
+viewport.height = 1000;
 
 var offsetX = 201;
 var offsetY = 251;
@@ -36,6 +36,7 @@ var consoleOpened = false;
 
 var approximativeMode = false;
 
+var drawCalls = 0;
 
 //append viewport to document
 $("#canvasContainer").append(viewport);
@@ -101,7 +102,7 @@ $(document).ready(function(){
                 $("canvas").css("cursor: url(resources/textures/icons/scroll_right.png), auto;");
             }
             
-            $("#consoleStats").html("Cursor position on screen:("+mouseX+", "+mouseY+")");
+            $("#consoleStats").html("Cursor position on screen:("+mouseX+", "+mouseY+")<br> Draw Calls: " + drawCalls);
 
         });
         
@@ -180,7 +181,7 @@ function setCommand(cmd) {
         }
         if(info[1] == "rotation") {
             currentRotationAngle = parseInt(info[2]);
-            $("#consoleContent").append("<p>> rotation angle is set to: " + info[2] + "&deg; clockwise</p>" );
+            $("#consoleContent").append("<p>> rotation angle is set to: " + currentRotationAngle + "&deg; clockwise</p>" );
         }
     }
     
