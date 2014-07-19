@@ -26,6 +26,7 @@ function main() {
     update(deltaTime);
     
     //render
+    //renderBuffer();
     render();
 
     //update last timestamp
@@ -44,6 +45,7 @@ function main() {
 
 function update(deltaTime) {
     //musicRotation();
+    //map rotation
 }
 
 function animation(main) {

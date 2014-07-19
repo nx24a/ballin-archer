@@ -1,11 +1,11 @@
-
+var buffer = [];
 
 //create viewport
 var viewport = document.createElement("canvas");
 var viewportControl = viewport.getContext("2d");
 
-viewport.width = 600;
-viewport.height = 300;
+viewport.width = 1024;
+viewport.height = 768;
 
 var offsetX = 201;
 var offsetY = 251;
@@ -23,6 +23,8 @@ var maxDrawRangeY = Math.ceil(viewport.height/(defaultTileHight*2)+4);
 
 var startX = 202;
 var startY = 140;
+
+var currentRotationAngle = 0;
 
 var pageX, pageY, mouseX, mouseY;
 
@@ -175,6 +177,10 @@ function setCommand(cmd) {
                     $("#consoleContent").append("<p>> rendering via requestAnimationFrame</p>");
                 }
             }
+        }
+        if(info[1] == "rotation") {
+            currentRotationAngle = parseInt(info[2]);
+            $("#consoleContent").append("<p>> rotation angle is set to: " + info[2] + "&deg; clockwise</p>" );
         }
     }
     
